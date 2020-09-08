@@ -1,0 +1,14 @@
+/react
+material-ui
+flexbox
+tmdb
+react file move to animation
+deploy with firebase
+
+
+
+commands used in this project
+npx create-react-app hulu-clone
+npm start
+npm install @material-ui/icons
+npm install @material-ui/core

@@ -1,0 +1,36 @@
+import React, { useState, useEffect } from 'react'
+import './Results.css'
+import VideoCard from './VideoCard'
+import axios from './axios'
+import FlipMove from 'react-flip-move'
+
+function Results({selectedOption}) {//state 
+    const [movies, setMovies]=useState([])
+
+    useEffect(()=>{
+        //run this components once when the result components load
+        //async function here
+        async function fetchData(){
+            const request=await axios.get(selectedOption);
+           setMovies(request.data.results)
+           return request;
+
+        }
+        fetchData()
+    },[selectedOption])//dependency comes outside from the useEffect
+
+    return (
+        <div className="results">
+            <FlipMove>
+            {movies.map((movie)=>(
+                    <VideoCard key={movie.id} movie={movie}/>
+
+                ))}
+            </FlipMove>
+           
+                   
+        </div>
+    )
+}
+
+export default Results
